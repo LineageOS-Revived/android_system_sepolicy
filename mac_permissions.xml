@@ -51,4 +51,11 @@
       <seinfo value="platform" />
     </signer>
 
+    <!-- Release dev key in AOSP -->
+    <signer signature="@RELEASE" >
+      <package name="org.secuso.privacyfriendlynetmonitor">
+        <seinfo value="netmonitor" />
+      </package>
+    </signer>
+
 </policy>

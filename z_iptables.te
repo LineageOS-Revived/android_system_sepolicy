@@ -1,0 +1,24 @@
+##
+## SEPolicy to execute z_iptables (transition from init)
+##
+type z_iptables, domain;
+type z_iptables_exec, exec_type, file_type;
+
+typeattribute z_iptables netdomain;
+
+allow z_iptables app_data_file:dir getattr;
+allow z_iptables package_service:service_manager find;
+allow z_iptables property_socket:sock_file write;
+allow z_iptables shell_exec:file rx_file_perms;
+allow z_iptables self:capability {net_admin net_raw};
+allow z_iptables self:rawip_socket create_socket_perms;
+allow z_iptables system_data_file:dir rw_dir_perms;
+allow z_iptables system_data_file:file create_file_perms;
+allow z_iptables system_file:file { execute_no_trans lock };
+allow z_iptables toolbox_exec:file rx_file_perms;
+
+binder_call(z_iptables, system_server)
+binder_use(z_iptables)
+init_daemon_domain(z_iptables)
+r_dir_file(z_iptables, proc_net)
+set_prop(z_iptables, system_prop)

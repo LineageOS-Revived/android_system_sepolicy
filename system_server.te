@@ -540,6 +540,10 @@ allow system_server update_engine:fifo_file write;
 allow system_server preloads_data_file:file { r_file_perms unlink };
 allow system_server preloads_data_file:dir { r_dir_perms write remove_name rmdir };
 
+# dumpsys/pipes in z_iptables executable
+allow system_server z_iptables:fd use;
+allow system_server z_iptables:fifo_file write;
+
 ###
 ### Neverallow rules
 ###
@@ -578,3 +582,4 @@ neverallow system_server { dev_type -frp_block_device }:blk_file no_rw_file_perm
 neverallow system_server self:process execmem;
 neverallow system_server ashmem_device:chr_file execute;
 neverallow system_server system_server_tmpfs:file execute;
+

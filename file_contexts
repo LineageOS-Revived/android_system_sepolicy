@@ -402,3 +402,8 @@
 /mnt/user(/.*)?             u:object_r:mnt_user_file:s0
 /mnt/runtime(/.*)?          u:object_r:storage_file:s0
 /storage(/.*)?              u:object_r:storage_file:s0
+
+# dnscrypt-proxy
+/system/bin/dnscrypt           u:object_r:dnscrypt_proxy_exec:s0
+/system/bin/dnscrypt-iptables  u:object_r:dnscrypt_proxy_exec:s0
+/system/xbin/dnscrypt-proxy    u:object_r:dnscrypt_proxy_exec:s0

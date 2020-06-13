@@ -158,6 +158,7 @@ neverallow {
   -vold
   -dumpstate
   -system_server
+  -dnscrypt_proxy
   userdebug_or_eng(`-perfprofd')
 } self:capability sys_ptrace;
 
@@ -543,6 +544,7 @@ neverallow {
   -init
   -shell
   -vold
+  -dnscrypt_proxy
 } shell_data_file:dir no_w_dir_perms;
 
 neverallow {
@@ -553,6 +555,7 @@ neverallow {
   -init
   -installd
   -system_server # why?
+  -dnscrypt_proxy
   userdebug_or_eng(`-uncrypt')
 } shell_data_file:dir { open search };
 
@@ -564,6 +567,7 @@ neverallow {
   -appdomain
   -dumpstate
   -installd
+  -dnscrypt_proxy
   userdebug_or_eng(`-uncrypt')
 } shell_data_file:file open;
 

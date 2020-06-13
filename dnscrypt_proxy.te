@@ -1,0 +1,37 @@
+##
+## SEPolicy to execute dnscrypt_proxy (transition from init)
+##
+type dnscrypt_proxy, domain;
+type dnscrypt_proxy_exec, exec_type, file_type;
+
+typeattribute dnscrypt_proxy domain;
+init_daemon_domain(dnscrypt_proxy)
+
+allow dnscrypt_proxy system_file:dir r_dir_perms;
+allow dnscrypt_proxy system_file:file { lock execute_no_trans };
+allow dnscrypt_proxy node:tcp_socket { node_bind };
+allow dnscrypt_proxy node:udp_socket { node_bind };
+allow dnscrypt_proxy port:tcp_socket { name_bind name_connect };
+allow dnscrypt_proxy port:udp_socket { name_bind };
+allow dnscrypt_proxy proc_net:file r_file_perms;
+allow dnscrypt_proxy proc_stat:file r_file_perms;
+allow dnscrypt_proxy properties_device:dir r_dir_perms;
+allow dnscrypt_proxy devpts:chr_file { open read write };
+allow dnscrypt_proxy shell_exec:file rx_file_perms;
+allow dnscrypt_proxy shell_data_file:dir create_dir_perms;
+allow dnscrypt_proxy shell_data_file:file create_file_perms;
+allow dnscrypt_proxy toolbox_exec:file rx_file_perms;
+allow dnscrypt_proxy property_socket:sock_file write;
+allow dnscrypt_proxy self:capability { net_admin net_raw sys_ptrace dac_override };
+allow dnscrypt_proxy self:capability2 block_suspend;
+allow dnscrypt_proxy self:rawip_socket create_socket_perms;
+allow dnscrypt_proxy self:tcp_socket { create_socket_perms listen accept };
+allow dnscrypt_proxy self:udp_socket create_socket_perms;
+allow dnscrypt_proxy init:file r_file_perms;
+allow dnscrypt_proxy init:dir r_dir_perms;
+allow dnscrypt_proxy dnscrypt_proxy_exec:file execute_no_trans;
+allow dnscrypt_proxy kernel:file read;
+allow dnscrypt_proxy rootfs:dir { read open };
+allow dnscrypt_proxy dnsproxyd_socket:sock_file write;
+allow dnscrypt_proxy init:unix_stream_socket connectto;
+set_prop(dnscrypt_proxy, system_prop)

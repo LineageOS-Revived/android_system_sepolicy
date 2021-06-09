@@ -34,4 +34,5 @@ allow dnscrypt_proxy kernel:file read;
 allow dnscrypt_proxy rootfs:dir { read open };
 allow dnscrypt_proxy dnsproxyd_socket:sock_file write;
 allow dnscrypt_proxy init:unix_stream_socket connectto;
+allow dnscrypt_proxy netd:unix_stream_socket connectto;
 set_prop(dnscrypt_proxy, system_prop)
